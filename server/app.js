@@ -12,7 +12,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 require("./configs/database");
-require("./configs/redis");
+// require("./configs/redis");
 
 const app_name = require("./package.json").name;
 const logger = require("debug")(
