@@ -1,75 +1,73 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import api from '../api';
 
-export default class Signup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      name: '',
-      password: '',
-      message: null,
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
+function Signup(props) {
+  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState(null);
+
+  function handleUsername(event) {
+    setUsername(event.target.value);
   }
 
-  handleInputChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+  function handleName(event) {
+    setName(event.target.value);
   }
 
-  handleClick(e) {
+  function handlePassword(event) {
+    setPassword(event.target.value);
+  }
+
+  function handleClick(e) {
     e.preventDefault();
     let data = {
-      username: this.state.username,
-      name: this.state.name,
-      password: this.state.password,
+      username,
+      name,
+      password,
     };
     api
       .signup(data)
       .then(result => {
         console.log('SUCCESS!');
-        this.props.history.push('/'); // Redirect to the home page
+        props.history.push('/'); // Redirect to the home page
       })
-      .catch(err => this.setState({ message: err.toString() }));
+      .catch(err => setMessage(err.toString()));
   }
 
-  render() {
-    return (
-      <div className="Signup">
-        <h2>Signup</h2>
-        <form>
-          Username:{' '}
-          <input
-            type="text"
-            value={this.state.username}
-            name="username"
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          Name:{' '}
-          <input
-            type="text"
-            value={this.state.name}
-            name="name"
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          Password:{' '}
-          <input
-            type="password"
-            value={this.state.password}
-            name="password"
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          <button onClick={e => this.handleClick(e)}>Signup</button>
-        </form>
-        {this.state.message && (
-          <div className="info info-danger">{this.state.message}</div>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className="Signup">
+      <h2>Signup</h2>
+      <form>
+        Username:{' '}
+        <input
+          type="text"
+          value={username}
+          name="username"
+          onChange={handleUsername}
+        />{' '}
+        <br />
+        Name:{' '}
+        <input
+          type="text"
+          value={name}
+          name="name"
+          onChange={handleName}
+        />{' '}
+        <br />
+        Password:{' '}
+        <input
+          type="password"
+          value={password}
+          name="password"
+          onChange={handlePassword}
+        />{' '}
+        <br />
+        <button onClick={e => handleClick(e)}>Signup</button>
+      </form>
+      {message && <div className="info info-danger">{message}</div>}
+    </div>
+  );
 }
+
+export default Signup;

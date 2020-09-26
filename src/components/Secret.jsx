@@ -8,8 +8,8 @@ function Secret() {
   useEffect(() => {
     api
       .getSecret()
-      .then(data => setSecret({ secret: data.secret }))
-      .catch(err => setMessage({ message: err.toString() }));
+      .then(data => setSecret(data.secret))
+      .catch(err => setMessage(err.toString()));
   });
 
   return (

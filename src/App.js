@@ -7,8 +7,6 @@ import Signup from './components/Signup'
 import api from './api'
 
 function App(props) {
-  const [countries] = useState([])
-
   function handleLogoutClick(e) {
     api.logout()
   }

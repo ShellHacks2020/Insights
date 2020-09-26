@@ -1,61 +1,55 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import api from '../api';
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      message: null,
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
+function Login(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState(null);
+
+  function handleUsername(event) {
+    setUsername(event.target.value);
   }
 
-  handleInputChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+  function handlePassword(event) {
+    setPassword(event.target.value);
   }
 
-  handleClick(e) {
+  function handleClick(e) {
     e.preventDefault();
     api
-      .login(this.state.username, this.state.password)
+      .login(username, password)
       .then(result => {
         console.log('SUCCESS!');
-        this.props.history.push('/'); // Redirect to the home page
+        props.history.push('/'); // Redirect to the home page
       })
-      .catch(err => this.setState({ message: err.toString() }));
+      .catch(err => setMessage(err.toString()));
   }
 
-  render() {
-    return (
-      <div className="Login">
-        <h2>Login</h2>
-        <form>
-          Username:{' '}
-          <input
-            type="text"
-            value={this.state.username}
-            name="username"
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          Password:{' '}
-          <input
-            type="password"
-            value={this.state.password}
-            name="password"
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          <button onClick={e => this.handleClick(e)}>Login</button>
-        </form>
-        {this.state.message && (
-          <div className="info info-danger">{this.state.message}</div>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className="Login">
+      <h2>Login</h2>
+      <form>
+        Username:{' '}
+        <input
+          type="text"
+          value={username}
+          name="username"
+          onChange={handleUsername}
+        />{' '}
+        <br />
+        Password:{' '}
+        <input
+          type="password"
+          value={password}
+          name="password"
+          onChange={handlePassword}
+        />{' '}
+        <br />
+        <button onClick={e => handleClick(e)}>Login</button>
+      </form>
+      {message && <div className="info info-danger">{message}</div>}
+    </div>
+  );
 }
+
+export default Login;
