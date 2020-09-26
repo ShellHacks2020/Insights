@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ShellHacks2020/Insights/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/ShellHacks2020/Insights/static/js/main.a440d151.chunk.js",
+    "main.js.map": "/ShellHacks2020/Insights/static/js/main.a440d151.chunk.js.map",
+    "runtime-main.js": "/ShellHacks2020/Insights/static/js/runtime-main.80fe62ac.js",
+    "runtime-main.js.map": "/ShellHacks2020/Insights/static/js/runtime-main.80fe62ac.js.map",
+    "static/css/2.d9ad5f5c.chunk.css": "/ShellHacks2020/Insights/static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.fde3d295.chunk.js": "/ShellHacks2020/Insights/static/js/2.fde3d295.chunk.js",
+    "static/js/2.fde3d295.chunk.js.map": "/ShellHacks2020/Insights/static/js/2.fde3d295.chunk.js.map",
+    "index.html": "/ShellHacks2020/Insights/index.html",
+    "precache-manifest.243c7a0bab3847c741e377f6eb5da540.js": "/ShellHacks2020/Insights/precache-manifest.243c7a0bab3847c741e377f6eb5da540.js",
+    "service-worker.js": "/ShellHacks2020/Insights/service-worker.js",
+    "static/css/2.d9ad5f5c.chunk.css.map": "/ShellHacks2020/Insights/static/css/2.d9ad5f5c.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/ShellHacks2020/Insights/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.fde3d295.chunk.js.LICENSE.txt": "/ShellHacks2020/Insights/static/js/2.fde3d295.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.80fe62ac.js",
+    "static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.fde3d295.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.a440d151.chunk.js"
+  ]
+}
