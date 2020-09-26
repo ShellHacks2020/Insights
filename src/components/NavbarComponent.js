@@ -10,8 +10,6 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 
 function NavbarComponent() {
-  const [countries] = useState([]);
-
   function handleLogoutClick(e) {
     api.logout();
   }
