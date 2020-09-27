@@ -12,12 +12,15 @@ import Home from '../pages/Home';
 import UserProfile from '../pages/UserProfile';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import EditUser from '../pages/EditUserProfile';
 import '../styles/navbar.scss';
 import * as firebase from 'firebase';
 
 function NavbarComponent(props) {
   const isSignedIn = props.isSignedIn;
   const setSignedIn = props.setSignedIn;
+  const user = props.user;
+  const setUser = props.setUser;
 
   return (
     <Fragment>
@@ -74,9 +77,22 @@ function NavbarComponent(props) {
               <Home isSignedIn={isSignedIn} setSignedIn={setSignedIn}></Home>
             )}
           />
+          <Route
+            path="/profile"
+            exact
+            render={props => (
+              <UserProfile user={user} setUser={setUser}></UserProfile>
+            )}
+          />
+          <Route
+            path="/edit-profile"
+            exact
+            render={props => (
+              <EditUser user={user} setUser={setUser}></EditUser>
+            )}
+          />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/profile" component={UserProfile} exact />
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </BrowserRouter>
