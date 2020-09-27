@@ -1,7 +1,7 @@
 import React from 'react';
 
 function EditUserProfile() {
-  return <div className="EditUserProfile"></div>;
+  return <div className='EditUserProfile'>here</div>;
 }
 
 export default EditUserProfile;

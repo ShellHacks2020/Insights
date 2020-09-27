@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from "./components/Navbar"
+import Navbar from './components/Navbar';
 import * as firebase from 'firebase';
 
 firebase.initializeApp({
-  apiKey: "AIzaSyArRZo3OJBFnNs0hkBHW2M54YJFtt3GKEM",
-  authDomain: "insights-tracker-app.firebaseapp.com"
-})
+  apiKey: 'AIzaSyArRZo3OJBFnNs0hkBHW2M54YJFtt3GKEM',
+  authDomain: 'insights-tracker-app.firebaseapp.com',
+});
 
 function App(props) {
-  const [isSignedIn, setSignedIn] = useState(false)
+  const [isSignedIn, setSignedIn] = useState(false);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Navbar isSignedIn={isSignedIn} setSignedIn={setSignedIn}></Navbar>
     </div>
   );
