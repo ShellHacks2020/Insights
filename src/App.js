@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
-
 firebase.initializeApp({
   apiKey: "AIzaSyArRZo3OJBFnNs0hkBHW2M54YJFtt3GKEM",
   authDomain: "https://insights-tracker-app.firebaseapp.com/__/auth/handler"
