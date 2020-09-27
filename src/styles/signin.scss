@@ -1,0 +1,37 @@
+.signin {
+  width: 40%;
+  height: 100%;
+  padding: 30px;
+  margin: auto auto;
+  .firebaseui-idp-button {
+    max-width: 100%;
+    min-height: 57px;
+  }
+  .firebaseui_container {
+    height: 75%;
+  }
+  .firebaseui-container {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  h1 {
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 118%;
+    text-align: center;
+    letter-spacing: 0.03em;
+    padding: 15px;
+    color: #013355;
+  }
+  .signin-container {
+    margin: auto;
+    height: 95%;
+    width: 90%;
+    background: #ffffff;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06),
+      0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+  }
+}
