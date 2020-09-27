@@ -1,43 +1,55 @@
-import React, { useState } from 'react';
-import { Route, Link, NavLink, Switch, BrowserRouter } from 'react-router-dom'
-import Home from './components/Home'
-import Secret from './components/Secret'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import api from './api'
+import React, { useState, useEffect } from 'react';
+import firebase from "firebase"
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+
+
+firebase.initializeApp({
+  apiKey: "AIzaSyArRZo3OJBFnNs0hkBHW2M54YJFtt3GKEM",
+  authDomain: "https://insights-tracker-app.firebaseapp.com/__/auth/handler"
+})
 
 function App(props) {
-  function handleLogoutClick(e) {
-    api.logout()
+  const [isSignedIn, setSignedIn] = useState(false)
+
+  const uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccess: () => false
+    }
   }
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      setSignedIn(!!user)
+      console.log("user", user)
+    })
+  });
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <header className="App-header">
-          <h1 className="App-title">MERN Boilerplate</h1>
-          <NavLink to="/" exact>
-            Home
-          </NavLink>
-          <NavLink to="/countries">Countries</NavLink>
-          <NavLink to="/add-country">Add country</NavLink>
-          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
-          {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {api.isLoggedIn() && (
-            <Link to="/" onClick={e => handleLogoutClick(e)}>
-              Logout
-        </Link>
-          )}
-          <NavLink to="/secret">Secret</NavLink>
-        </header>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/secret" component={Secret} />
-          <Route render={() => <h2>404</h2>} />
-        </Switch>
-      </BrowserRouter>
+      {isSignedIn ? (
+        <span>
+          <div>Signed In!</div>
+          <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+          <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+          <img
+            alt="profile"
+            src={firebase.auth().currentUser.photoURL}
+          />
+        </span>
+      ) : (
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        )}
     </div>
   );
 }
