@@ -26,9 +26,20 @@ function Home(props) {
               Find you favorite influencer. Grab data and go.
             </div>
             <div className="get-started-btn-ctn">
-              <button className="get-started-btn">
-                <div className="btn-message">Get Started</div>
-              </button>
+              {props.isSignedIn ? (
+                <button
+                  className="get-started-btn"
+                  onClick={() => {
+                    window.location.href = '/profile';
+                  }}
+                >
+                  <div className="btn-message">Profile</div>
+                </button>
+              ) : (
+                <button className="get-started-btn">
+                  <div className="btn-message">Get Started</div>
+                </button>
+              )}
             </div>
           </div>
         </div>

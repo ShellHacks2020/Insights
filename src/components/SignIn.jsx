@@ -14,7 +14,7 @@ function SignIn(props) {
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
-      signInSuccess: () => false,
+      signInSuccess: () => (window.location.href = '/edit-profile'),
     },
   };
 

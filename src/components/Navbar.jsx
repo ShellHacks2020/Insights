@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import api from '../api';
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
 import {
   Navbar,
@@ -52,21 +51,32 @@ function NavbarComponent(props) {
                   </Nav.Link>
                 </NavItem>
               )}
-              <Button variant="outline-success">Get Started</Button>
+              {props.isSignedIn ? (
+                <Button
+                  variant="outline-success"
+                  onClick={() => {
+                    window.location.href = '/profile';
+                  }}
+                >
+                  Profile
+                </Button>
+              ) : (
+                <Button variant="outline-success">Get Started</Button>
+              )}
             </Form>
           </Navbar.Collapse>
         </Navbar>
         <Switch>
           <Route
             path="/"
+            exact
             render={props => (
               <Home isSignedIn={isSignedIn} setSignedIn={setSignedIn}></Home>
             )}
           />
-          <Route path="/home" component={Home} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/user-profile" component={UserProfile} />
+          <Route path="/profile" component={UserProfile} exact />
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </BrowserRouter>
