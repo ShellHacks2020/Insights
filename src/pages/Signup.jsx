@@ -34,6 +34,7 @@ function Signup(props) {
       })
       .catch(err => setMessage(err.toString()));
   }
+  
 
   return (
     <div className="Signup">
