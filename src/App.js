@@ -6,7 +6,6 @@ function App(props) {
     <div className='App'>
       <header className='App-header'>
         <Navbar />
-        <h1 className='App-title'>MERN Boilerplate</h1>
       </header>
     </div>
   );
