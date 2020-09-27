@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6803d29b08c17872fcee81af7aed65f5",
+    "revision": "cd03089a82f0e6838861675a89db299f",
     "url": "/ShellHacks2020/Insights/index.html"
   },
   {
