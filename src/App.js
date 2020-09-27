@@ -4,7 +4,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 firebase.initializeApp({
   apiKey: "AIzaSyArRZo3OJBFnNs0hkBHW2M54YJFtt3GKEM",
-  authDomain: "https://insights-tracker-app.firebaseapp.com/__/auth/handler"
+  authDomain: "insights-tracker-app.firebaseapp.com"
 })
 
 function App(props) {
